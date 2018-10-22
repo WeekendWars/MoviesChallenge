@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.monits.staticCodeAnalysis'
 
 android {
     signingConfigs {
@@ -31,6 +32,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+/**
+ * Static code analysis configuration for running checks
+ */
+staticCodeAnalysis {
+    findbugs = true
+    checkstyle = true
+    pmd = true
+    cpd = true
+    androidLint = true
+    ignoreErrors = false
 }
 
 dependencies {

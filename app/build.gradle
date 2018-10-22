@@ -49,6 +49,14 @@ staticCodeAnalysis {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+
+    /*
+        This is a library of my own which sets up a simple MVP architecture
+        Resources: https://github.com/WeekendWars/mvp-core
+      */
+    implementation('com.github.weekendwars:core-mvp:1.0.1')
+
+    // Test dependencies
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$espressoVersion"

@@ -25,11 +25,17 @@ android {
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.Release
+
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/tv/"'
+            buildConfigField "String", "API_KEY", '"53b0f31bbc5e687528d3fb733025e73c"'
         }
         debug {
             minifyEnabled false
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            buildConfigField "String", "BASE_URL", '"https://api.themoviedb.org/3/tv/"'
+            buildConfigField "String", "API_KEY", '"53b0f31bbc5e687528d3fb733025e73c"'
         }
     }
 }
@@ -55,6 +61,9 @@ dependencies {
         Resources: https://github.com/WeekendWars/mvp-core
       */
     implementation('com.github.weekendwars:core-mvp:1.0.1')
+
+    // Gson dependency
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
     // Test dependencies
     testImplementation "junit:junit:$junitVersion"

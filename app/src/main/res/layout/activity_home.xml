@@ -5,9 +5,27 @@
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Skeleton View -->
+        <include layout="@layout/activity_home_skeleton_view" />
+
+        <!-- List view -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/moviesListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Empty View -->
+        <include layout="@layout/activity_home_empty_view" />
+
+        <!-- Network error -->
+        <include layout="@layout/activity_home_network_view" />
+
+    </ViewFlipper>
 
 </android.support.design.widget.CoordinatorLayout>

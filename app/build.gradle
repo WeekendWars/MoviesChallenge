@@ -65,6 +65,9 @@ dependencies {
     // Gson dependency
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
 
+    // RecyclerView
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+
     // Test dependencies
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "com.android.support.test:runner:$testRunnerVersion"

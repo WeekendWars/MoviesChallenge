@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movies Challenge</string>
+    <string name="activity_home_empty_title">There\'re no available films</string>
+    <string name="activity_home_empty_description">It seems there\'s nothing to do here..</string>
+    <string name="activity_home_network_title">Unavailable network</string>
+    <string name="activity_home_network_description">Check your internet connection</string>
 </resources>

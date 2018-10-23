@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
@@ -8,4 +9,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.Font" parent="AppTheme">
+        <item name="android:textColor">@color/fontPrimary</item>
+        <item name="android:textSize">@dimen/font_normal</item>
+    </style>
+
+    <style name="AppTheme.Font.Primary" parent="AppTheme.Font">
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="AppTheme.Font.Secondary" parent="AppTheme.Font">
+        <item name="android:textColor">@color/fontSecondary</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
 </resources>

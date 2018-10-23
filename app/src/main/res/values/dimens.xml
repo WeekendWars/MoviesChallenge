@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Modular dimens -->
+    <dimen name="_1m">8dp</dimen>
+    <dimen name="_2m">16dp</dimen>
+
+    <!-- Fonts -->
+    <dimen name="font_large">20sp</dimen>
+    <dimen name="font_normal">18sp</dimen>
+    <dimen name="font_small">16sp</dimen>
+</resources>

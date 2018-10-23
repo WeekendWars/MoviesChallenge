@@ -10,16 +10,18 @@
     </style>
 
     <style name="AppTheme.Font" parent="AppTheme">
-        <item name="android:textColor">@color/fontPrimary</item>
+        <item name="android:textColor">@color/colorFontPrimary</item>
         <item name="android:textSize">@dimen/font_normal</item>
     </style>
 
     <style name="AppTheme.Font.Primary" parent="AppTheme.Font">
+        <item name="android:lineSpacingExtra">@dimen/_2m</item>
         <item name="android:textSize">@dimen/font_large</item>
     </style>
 
     <style name="AppTheme.Font.Secondary" parent="AppTheme.Font">
-        <item name="android:textColor">@color/fontSecondary</item>
+        <item name="android:lineSpacingExtra">@dimen/_05m</item>
+        <item name="android:textColor">@color/colorFontSecondary</item>
         <item name="android:textSize">@dimen/font_small</item>
     </style>
 </resources>

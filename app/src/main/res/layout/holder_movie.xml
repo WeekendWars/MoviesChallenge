@@ -1,5 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<com.facebook.shimmer.ShimmerFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:shimmer_auto_start="true">
 
-</FrameLayout>
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/_05m">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/holder_cover_size"
+                android:background="#BDBDBD" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_2m"
+                android:textAppearance="@style/AppTheme.Font.Primary"
+                tools:text="Film title" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_2m"
+                android:layout_marginLeft="@dimen/_2m"
+                android:layout_marginRight="@dimen/_2m"
+                android:layout_marginStart="@dimen/_2m"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:textAppearance="@style/AppTheme.Font.Secondary"
+                tools:text="@tools:sample/lorem/random" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_margin="@dimen/_2m"
+                android:drawableLeft="@drawable/vector_star"
+                android:drawablePadding="@dimen/_1m"
+                android:drawableStart="@drawable/vector_star"
+                android:textAppearance="@style/AppTheme.Font.Secondary"
+                tools:text="24" />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</com.facebook.shimmer.ShimmerFrameLayout>

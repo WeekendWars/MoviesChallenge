@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
-
 
     <ViewFlipper
         android:id="@+id/viewFlipper"
@@ -12,8 +12,26 @@
         android:layout_height="match_parent">
 
         <!-- Skeleton View -->
-        <include layout="@layout/activity_home_skeleton_view" />
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingEnd="@dimen/_2m"
+            android:paddingLeft="@dimen/_2m"
+            android:paddingRight="@dimen/_2m"
+            android:paddingStart="@dimen/_2m"
+            app:shimmer_auto_start="true">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include layout="@layout/activity_home_skeleton_view" />
+
+                <include layout="@layout/activity_home_skeleton_view" />
+            </LinearLayout>
+        </com.facebook.shimmer.ShimmerFrameLayout>
         <!-- List view -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/moviesListView"

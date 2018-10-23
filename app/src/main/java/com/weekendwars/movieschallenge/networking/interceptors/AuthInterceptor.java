@@ -14,7 +14,7 @@ import okhttp3.Response;
 /**
  * Authentication interceptor intended to add the API KEY as a query param on every request
  */
-public class APIKeyInterceptor implements Interceptor {
+public class AuthInterceptor implements Interceptor {
 
     private static final String QUERY_PARAM_API_KEY = "api_key";
 

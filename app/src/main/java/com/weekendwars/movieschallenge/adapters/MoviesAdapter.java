@@ -14,6 +14,8 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
+    private static final int LAYOUT_PROGRESS = R.layout.holder_progress;
+    private static final int LAYOUT_HOLDER = R.layout.holder_movie;
     private final List<Movie> mData = new ArrayList<>();
     private boolean loading;
 
@@ -27,7 +29,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final MovieViewHolder holder, final int position) {
-        holder.onBind(mData.get(holder.getAdapterPosition()));
+        if (getItemViewType(position) == LAYOUT_HOLDER) {
+            holder.onBind(mData.get(holder.getAdapterPosition()));
+        }
     }
 
     @Override
@@ -38,7 +42,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     @Override
     public int getItemViewType(final int position) {
         // If it's the last position renders the progress view. Otherwise renders the holder's view
-        return position == mData.size() - 1 ? R.layout.holder_progress : R.layout.holder_movie;
+        return position == mData.size() - 1 && loading ? LAYOUT_PROGRESS : LAYOUT_HOLDER;
     }
 
     /**

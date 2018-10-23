@@ -27,22 +27,25 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <include layout="@layout/activity_home_skeleton_view" />
+                <include layout="@layout/holder_movie_skeleton_view" />
 
-                <include layout="@layout/activity_home_skeleton_view" />
+                <include layout="@layout/holder_movie_skeleton_view" />
             </LinearLayout>
         </com.facebook.shimmer.ShimmerFrameLayout>
+
         <!-- List view -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/moviesListView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/_2m" />
 
         <!-- Empty View -->
         <include layout="@layout/activity_home_empty_view" />
 
         <!-- Network error -->
-        <include layout="@layout/activity_home_network_view" />
+        <include layout="@layout/activity_home_error_view" />
 
     </ViewFlipper>
 

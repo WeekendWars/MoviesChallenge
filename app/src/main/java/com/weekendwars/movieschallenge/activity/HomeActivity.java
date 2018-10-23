@@ -66,7 +66,7 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     }
 
     @Override
-    public void showNetworkError() {
+    public void showErrorView() {
         mViewFlipper.setDisplayedChild(STATE_NETWORK);
     }
 

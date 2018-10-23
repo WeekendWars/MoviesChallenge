@@ -8,19 +8,19 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/vector_network" />
+        android:src="@drawable/vector_error" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_2m"
-        android:text="@string/activity_home_network_title"
+        android:text="@string/activity_home_error_title"
         android:textAppearance="@style/AppTheme.Font.Primary" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_1m"
-        android:text="@string/activity_home_network_description"
+        android:text="@string/activity_home_error_description"
         android:textAppearance="@style/AppTheme.Font.Secondary" />
 </LinearLayout>

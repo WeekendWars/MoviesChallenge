@@ -6,7 +6,7 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.weekendwars.movieschallenge.BuildConfig;
-import com.weekendwars.movieschallenge.networking.interceptors.APIKeyInterceptor;
+import com.weekendwars.movieschallenge.networking.interceptors.AuthInterceptor;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -31,13 +31,12 @@ public final class RetrofitAdapter {
                 .build();
     }
 
-
     @NonNull
     public Retrofit getRetrofit() {
         return mRetrofit;
     }
 
     private OkHttpClient getClient() {
-        return new OkHttpClient.Builder().addInterceptor(new APIKeyInterceptor()).build();
+        return new OkHttpClient.Builder().addInterceptor(new AuthInterceptor()).build();
     }
 }

@@ -27,9 +27,9 @@ public interface HomeView extends AbstractView {
     void showEmptyView();
 
     /**
-     * Called for displaying the network error view
+     * Called for displaying the error view
      */
-    void showNetworkError();
+    void showErrorView();
 
     /**
      * Called for loading a new page on the list.

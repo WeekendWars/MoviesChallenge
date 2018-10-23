@@ -5,7 +5,6 @@
     <dimen name="_05m">4dp</dimen>
     <dimen name="_1m">8dp</dimen>
     <dimen name="_2m">16dp</dimen>
-    <dimen name="_10m">80dp</dimen>
 
     <!-- Custom dimens -->
     <dimen name="holder_cover_size">200dp</dimen>

@@ -4,4 +4,5 @@
     <string name="activity_home_empty_description">It seems there\'s nothing to do here..</string>
     <string name="activity_home_error_title">Ups! Something went wrong</string>
     <string name="activity_home_error_description">Please try again later</string>
+    <string name="activity_movie_detail_overview_title">Overview</string>
 </resources>

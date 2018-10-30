@@ -15,7 +15,8 @@ import com.weekendwars.movieschallenge.view.HomeView;
 
 import java.util.List;
 
-public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> implements HomeView {
+public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> implements HomeView,
+        MoviesAdapter.MovieActionListener {
 
     private static final int STATE_LIST = 1;
     private static final int STATE_EMPTY = 2;
@@ -32,6 +33,8 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
         final RecyclerView recyclerView = findViewById(R.id.moviesListView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(mAdapter);
+
+        mAdapter.setMoviewActionListener(this);
     }
 
     @Override
@@ -74,5 +77,10 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     public void renderNewPage(@NonNull final List<Movie> data) {
         mAdapter.showProgress(false);
         mAdapter.addItems(data);
+    }
+
+    @Override
+    public void onMovieSelected(@NonNull final Movie movie) {
+        startActivity(MovieDetailActivity.getIntent(this, movie));
     }
 }

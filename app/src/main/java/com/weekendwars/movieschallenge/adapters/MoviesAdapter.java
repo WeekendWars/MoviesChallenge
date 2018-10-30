@@ -3,6 +3,7 @@ package com.weekendwars.movieschallenge.adapters;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.weekendwars.movieschallenge.R;
@@ -18,6 +19,16 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private static final int LAYOUT_HOLDER = R.layout.holder_movie;
     private final List<Movie> mData = new ArrayList<>();
     private boolean loading;
+    private MovieActionListener mListener;
+
+    public interface MovieActionListener {
+        /**
+         * Called when a movie's been selected by user's interaction
+         *
+         * @param movie the selected moview
+         */
+        void onMovieSelected(@NonNull Movie movie);
+    }
 
     @NonNull
     @Override
@@ -31,6 +42,20 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public void onBindViewHolder(@NonNull final MovieViewHolder holder, final int position) {
         if (getItemViewType(position) == LAYOUT_HOLDER) {
             holder.onBind(mData.get(holder.getAdapterPosition()));
+
+            // If someone is listening for action events we configure listener's action
+            if (mListener != null) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(final View view) {
+                        /*
+                            Uses adapter position because android cannot ensure data's position at this point
+                            see: RecyclerView.Adapter.onBindViewHolder()'s documentation.
+                         */
+                        mListener.onMovieSelected(mData.get(holder.getAdapterPosition()));
+                    }
+                });
+            }
         }
     }
 
@@ -43,6 +68,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     public int getItemViewType(final int position) {
         // If it's the last position renders the progress view. Otherwise renders the holder's view
         return position == mData.size() - 1 && loading ? LAYOUT_PROGRESS : LAYOUT_HOLDER;
+    }
+
+    public void setMoviewActionListener(@NonNull final MovieActionListener listener) {
+        mListener = listener;
     }
 
     /**

@@ -9,6 +9,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
     <style name="AppTheme.Font" parent="AppTheme">
         <item name="android:textColor">@color/colorFontPrimary</item>
         <item name="android:textSize">@dimen/font_normal</item>

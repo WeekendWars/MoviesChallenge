@@ -19,7 +19,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
     private static final int LAYOUT_HOLDER = R.layout.holder_movie;
     private final List<Movie> mData = new ArrayList<>();
     private boolean loading;
-    private MovieActionListener mListener;
+
+    /*
+        Default access modifier for avoiding hidden java costs by accessing a private member
+        from an auto-generated method.
+      */
+    /* default */ MovieActionListener mListener;
 
     public interface MovieActionListener {
         /**

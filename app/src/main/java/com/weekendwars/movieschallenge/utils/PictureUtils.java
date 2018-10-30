@@ -6,7 +6,7 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-public class PictureUtils {
+public final class PictureUtils {
     private static final String URL_PREFIX = "https://image.tmdb.org/t/p/w500/";
 
     private PictureUtils() {

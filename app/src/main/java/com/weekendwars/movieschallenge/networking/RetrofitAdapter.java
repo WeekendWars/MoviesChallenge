@@ -1,7 +1,5 @@
 package com.weekendwars.movieschallenge.networking;
 
-import android.support.annotation.NonNull;
-
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -16,24 +14,19 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public final class RetrofitAdapter {
 
     public static final RetrofitAdapter INSTANCE = new RetrofitAdapter();
-    private final Retrofit mRetrofit;
+    public final Retrofit retrofit;
 
     private RetrofitAdapter() {
         final Gson gson = new GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
                 .create();
 
-        mRetrofit = new Retrofit.Builder()
+        retrofit = new Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .client(getClient())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
-    }
-
-    @NonNull
-    public Retrofit getRetrofit() {
-        return mRetrofit;
     }
 
     private OkHttpClient getClient() {

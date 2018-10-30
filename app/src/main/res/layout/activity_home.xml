@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,29 +8,15 @@
     <ViewFlipper
         android:id="@+id/viewFlipper"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:inAnimation="@android:anim/fade_in"
+        android:outAnimation="@android:anim/fade_out">
 
-        <!-- Skeleton View -->
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:layout_width="match_parent"
+        <!-- Progress View -->
+        <ProgressBar
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingEnd="@dimen/_2m"
-            android:paddingLeft="@dimen/_2m"
-            android:paddingRight="@dimen/_2m"
-            android:paddingStart="@dimen/_2m"
-            app:shimmer_auto_start="true">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <include layout="@layout/holder_movie_skeleton_view" />
-
-                <include layout="@layout/holder_movie_skeleton_view" />
-            </LinearLayout>
-        </com.facebook.shimmer.ShimmerFrameLayout>
+            android:layout_gravity="center" />
 
         <!-- List view -->
         <android.support.v7.widget.RecyclerView

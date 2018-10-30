@@ -24,6 +24,6 @@ public final class MoviesModel {
     }
 
     private MoviesService getService() {
-        return RetrofitAdapter.INSTANCE.getRetrofit().create(MoviesService.class);
+        return RetrofitAdapter.INSTANCE.retrofit.create(MoviesService.class);
     }
 }

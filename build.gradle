@@ -9,7 +9,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.4'
-
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.3'
         /*
             This is the Monits's static code analysis plugin for running checks on build like: Findbugs,
             Checkstyle, PMD, CPD and Android lints.

@@ -1,7 +1,10 @@
 package com.weekendwars.movieschallenge.activity;
 
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ViewFlipper;
@@ -9,6 +12,7 @@ import android.widget.ViewFlipper;
 import com.weekendwars.core.mvp.activities.AbstractActivity;
 import com.weekendwars.movieschallenge.R;
 import com.weekendwars.movieschallenge.adapters.MoviesAdapter;
+import com.weekendwars.movieschallenge.adapters.holders.MovieViewHolder;
 import com.weekendwars.movieschallenge.dto.Movie;
 import com.weekendwars.movieschallenge.presenter.HomePresenter;
 import com.weekendwars.movieschallenge.view.HomeView;
@@ -55,7 +59,7 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     @Override
     public void render(@NonNull final List<Movie> data) {
         mAdapter.setItems(data);
-        mViewFlipper.setDisplayedChild(STATE_LIST);
+        setState(STATE_LIST);
     }
 
     @Override
@@ -65,12 +69,20 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
 
     @Override
     public void showEmptyView() {
-        mViewFlipper.setDisplayedChild(STATE_EMPTY);
+        setState(STATE_EMPTY);
     }
 
     @Override
     public void showErrorView() {
-        mViewFlipper.setDisplayedChild(STATE_NETWORK);
+        setState(STATE_NETWORK);
+    }
+
+    private void setState(final int state) {
+        if (state == mViewFlipper.getDisplayedChild()) {
+            return;
+        }
+
+        mViewFlipper.setDisplayedChild(state);
     }
 
     @Override
@@ -80,7 +92,16 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     }
 
     @Override
-    public void onMovieSelected(@NonNull final Movie movie) {
-        startActivity(MovieDetailActivity.getIntent(this, movie));
+    public void onMovieSelected(@NonNull final MovieViewHolder holder, @NonNull final Movie movie) {
+        final Intent intent = MovieDetailActivity.getIntent(this, movie);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            final ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(this,
+                    holder.itemView.findViewById(R.id.coverView), "coverView");
+
+            startActivity(intent, options.toBundle());
+        } else {
+            startActivity(intent);
+        }
     }
 }

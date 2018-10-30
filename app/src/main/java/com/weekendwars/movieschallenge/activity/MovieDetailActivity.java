@@ -40,8 +40,8 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         // If factory method has not been used we throw an exception
         if (getIntent().getExtras() == null || !getIntent().getExtras().containsKey(EXTRA_MOVIE)) {
-            throw new AssertionError("Invalid activity invocation." +
-                    "Please use it's factory method MovieActivity.getIntent()");
+            throw new AssertionError("Invalid activity invocation."
+                    + "Please use it's factory method MovieActivity.getIntent()");
         }
 
         setContentView(R.layout.activity_movie_detail);

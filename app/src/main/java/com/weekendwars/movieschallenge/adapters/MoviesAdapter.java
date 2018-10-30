@@ -30,9 +30,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         /**
          * Called when a movie's been selected by user's interaction
          *
-         * @param movie the selected moview
+         * @param holder the selected view holder
+         * @param movie  the selected moview
          */
-        void onMovieSelected(@NonNull Movie movie);
+        void onMovieSelected(@NonNull MovieViewHolder holder, @NonNull Movie movie);
     }
 
     @NonNull
@@ -57,7 +58,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
                             Uses adapter position because android cannot ensure data's position at this point
                             see: RecyclerView.Adapter.onBindViewHolder()'s documentation.
                          */
-                        mListener.onMovieSelected(mData.get(holder.getAdapterPosition()));
+                        mListener.onMovieSelected(holder, mData.get(holder.getAdapterPosition()));
                     }
                 });
             }

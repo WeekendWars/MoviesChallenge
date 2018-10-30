@@ -22,14 +22,14 @@ public class HomePresenter extends AbstractPresenter<HomeView> {
         super.attachView(view);
 
         if (mState == null) {
-            requestMovies();
+            requestPopularTvShows();
         } else {
             getView().render(mState.results);
         }
     }
 
-    private void requestMovies() {
-        addDisposable(MoviesModel.INSTANCE.getMovies().subscribeOn(Schedulers.io())
+    private void requestPopularTvShows() {
+        addDisposable(MoviesModel.INSTANCE.getPopularTvShows().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<MoviePage>() {
                     @Override
                     public void accept(final MoviePage moviePage) {

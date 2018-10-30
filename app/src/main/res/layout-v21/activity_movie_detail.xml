@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -41,6 +42,39 @@
                 android:gravity="start"
                 android:textAppearance="@style/AppTheme.Font.Secondary"
                 tools:text="@tools:sample/lorem/random" />
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2m"
+                android:text="@string/activity_movie_detail_related_title"
+                android:textAppearance="@style/AppTheme.Font.Primary"
+                android:textSize="@dimen/font_large" />
+
+            <!-- Separator -->
+            <View
+                android:layout_width="150dp"
+                android:layout_height="@dimen/_05m"
+                android:layout_marginTop="@dimen/_1m"
+                android:background="@color/colorPrimaryDark" />
+
+            <ViewFlipper
+                android:id="@+id/viewFlipper"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2m">
+
+                <ProgressBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/similarShowsView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </ViewFlipper>
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

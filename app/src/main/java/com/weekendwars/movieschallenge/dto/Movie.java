@@ -22,6 +22,7 @@ public class Movie implements Parcelable {
         }
     };
 
+    public final int id;
     public final String name;
     public final int voteCount;
     public final String firstAirDate;
@@ -32,16 +33,18 @@ public class Movie implements Parcelable {
     /**
      * Default constructor
      *
-     * @param name          the movie's name
-     * @param voteCount     the quantity of votes the movie's received
-     * @param firstAirDate  the release date
+     * @param id           movie's id
+     * @param name         the movie's name
+     * @param voteCount    the quantity of votes the movie's received
+     * @param firstAirDate the release date
      * @param backdropPath the backdrop image url
-     * @param posterPath    the poster image url
-     * @param overview      the moview's overview
+     * @param posterPath   the poster image url
+     * @param overview     the moview's overview
      */
-    public Movie(@NonNull final String name, final int voteCount, @NonNull final String firstAirDate,
-                 @Nullable final String backdropPath, @Nullable final String posterPath,
-                 @NonNull final String overview) {
+    public Movie(final int id, @NonNull final String name, final int voteCount,
+                 @NonNull final String firstAirDate, @Nullable final String backdropPath,
+                 @Nullable final String posterPath, @NonNull final String overview) {
+        this.id = id;
         this.name = name;
         this.voteCount = voteCount;
         this.firstAirDate = firstAirDate;
@@ -51,6 +54,7 @@ public class Movie implements Parcelable {
     }
 
     protected Movie(final Parcel in) {
+        id = in.readInt();
         name = in.readString();
         voteCount = in.readInt();
         firstAirDate = in.readString();
@@ -66,6 +70,7 @@ public class Movie implements Parcelable {
 
     @Override
     public void writeToParcel(final Parcel parcel, final int i) {
+        parcel.writeInt(id);
         parcel.writeString(name);
         parcel.writeInt(voteCount);
         parcel.writeString(firstAirDate);
@@ -77,6 +82,7 @@ public class Movie implements Parcelable {
     @Override
     public String toString() {
         return "Movie{"
+                + "id='" + id + '\''
                 + "name='" + name + '\''
                 + ", voteCount=" + voteCount
                 + ", firstAirDate='" + firstAirDate + '\''

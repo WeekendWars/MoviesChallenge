@@ -26,16 +26,6 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
       */
     /* default */ MovieActionListener mListener;
 
-    public interface MovieActionListener {
-        /**
-         * Called when a movie's been selected by user's interaction
-         *
-         * @param holder the selected view holder
-         * @param movie  the selected moview
-         */
-        void onMovieSelected(@NonNull MovieViewHolder holder, @NonNull Movie movie);
-    }
-
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup,

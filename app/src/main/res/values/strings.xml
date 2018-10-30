@@ -5,4 +5,6 @@
     <string name="activity_home_error_title">Ups! Something went wrong</string>
     <string name="activity_home_error_description">Please try again later</string>
     <string name="activity_movie_detail_overview_title">Overview</string>
+    <string name="activity_movie_detail_related_title">Related TV Shows</string>
+    <string name="error_tv_show">Couldn\'t display similar TV shows</string>
 </resources>

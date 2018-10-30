@@ -11,8 +11,8 @@ import android.widget.ViewFlipper;
 
 import com.weekendwars.core.mvp.activities.AbstractActivity;
 import com.weekendwars.movieschallenge.R;
+import com.weekendwars.movieschallenge.adapters.MovieActionListener;
 import com.weekendwars.movieschallenge.adapters.MoviesAdapter;
-import com.weekendwars.movieschallenge.adapters.holders.MovieViewHolder;
 import com.weekendwars.movieschallenge.dto.Movie;
 import com.weekendwars.movieschallenge.presenter.HomePresenter;
 import com.weekendwars.movieschallenge.view.HomeView;
@@ -20,7 +20,7 @@ import com.weekendwars.movieschallenge.view.HomeView;
 import java.util.List;
 
 public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> implements HomeView,
-        MoviesAdapter.MovieActionListener {
+        MovieActionListener {
 
     private static final int STATE_LIST = 1;
     private static final int STATE_EMPTY = 2;
@@ -92,7 +92,7 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     }
 
     @Override
-    public void onMovieSelected(@NonNull final MovieViewHolder holder, @NonNull final Movie movie) {
+    public void onMovieSelected(@NonNull final RecyclerView.ViewHolder holder, @NonNull final Movie movie) {
         final Intent intent = MovieDetailActivity.getIntent(this, movie);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {

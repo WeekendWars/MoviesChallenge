@@ -2,7 +2,7 @@ package com.weekendwars.movieschallenge.models;
 
 import com.weekendwars.movieschallenge.dto.MoviePage;
 import com.weekendwars.movieschallenge.networking.RetrofitAdapter;
-import com.weekendwars.movieschallenge.services.MoviesService;
+import com.weekendwars.movieschallenge.services.TVService;
 
 import io.reactivex.Observable;
 
@@ -19,11 +19,21 @@ public final class MoviesModel {
      *
      * @return the observable with data
      */
-    public Observable<MoviePage> getMovies() {
-        return getService().getMovies();
+    public Observable<MoviePage> getPopularTvShows() {
+        return getService().getPopularTvShows();
     }
 
-    private MoviesService getService() {
-        return RetrofitAdapter.INSTANCE.retrofit.create(MoviesService.class);
+    /**
+     * Makes an API call for requesting a TV show's similar topic shows
+     *
+     * @param id the show's id
+     * @return the observable with data
+     */
+    public Observable<MoviePage> getSimilarTvShows(final int id) {
+        return getService().getSimilarTvShows(id);
+    }
+
+    private TVService getService() {
+        return RetrofitAdapter.INSTANCE.retrofit.create(TVService.class);
     }
 }

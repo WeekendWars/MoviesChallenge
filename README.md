@@ -65,8 +65,8 @@ Classes remaining in app-release.apk:  63306
 ```
 
 ### Screenshots
-<img src="https://lh5.googleusercontent.com/l3DQkVp8oV_xYFrV8JOuUTnKfpu8gJtuC3pZTDMj1uKrl_HjEoFSWCC-kWo5Y4pis36OQN7qHZ4tc3k7AAyG=w2880-h1482-rw">
+<img src="https://lh6.googleusercontent.com/GnnJWntrWKJ11NzhhAMfGe5469mJzz7BGR3d1DlR_DzBcFcL3QTZp9d58plRz4ho8FntkflIqUNXYNjUm7up=w2880-h1482-rw">
 
 
-<img src="https://lh3.googleusercontent.com/q4f8GzstK8JZ7jot1MmBwLfYaeGdjkZxP8FGcjVlRDWZxPJyfZwrURt1U58HRKHxX4mk86lTR2_z6JhaNFCV=w2880-h1482-rw">
+<img src="https://lh4.googleusercontent.com/K4VzPgdHFemc02uYmV3qh938BrTRxNlnirPHJv_iZWr2DRmaeWrYPyqAe47GubL5uM3QVbNXjjxxsjlfh0k8=w2880-h1482-rw">
 

@@ -52,7 +52,7 @@ Classes remaining in app-debug.apk:  60670
 ```
 
 **(There're like 15k methods only from Android and Support Library)**
-<img src="https://lh4.googleusercontent.com/Q-Fx6E3JYhA6_W-6Craw8g0KNXMf9ePMULQSCxR20NQz33G2hl6NWMS68qqVeKO3CuRtTTUKAB3EtJiqWoNM=w2880-h1482-rw">
+<img src="https://files.fm/thumb_show.php?i=b67tyx59&view">
 
 
 Since they've requested **Production ready code** I've added the apk signin, the release variant and it's proguard configuration ending up with something like this:
@@ -67,8 +67,8 @@ Classes remaining in app-release.apk:  63306
 ```
 
 ### Screenshots
-<img src="https://lh6.googleusercontent.com/GnnJWntrWKJ11NzhhAMfGe5469mJzz7BGR3d1DlR_DzBcFcL3QTZp9d58plRz4ho8FntkflIqUNXYNjUm7up=w2880-h1482-rw">
+<img src="https://files.fm/thumb_show.php?i=k3bw3nzw&view">
 
 
-<img src="https://lh4.googleusercontent.com/K4VzPgdHFemc02uYmV3qh938BrTRxNlnirPHJv_iZWr2DRmaeWrYPyqAe47GubL5uM3QVbNXjjxxsjlfh0k8=w2880-h1482-rw">
+<img src="https://files.fm/thumb_show.php?i=4d8rzas9&view">
 

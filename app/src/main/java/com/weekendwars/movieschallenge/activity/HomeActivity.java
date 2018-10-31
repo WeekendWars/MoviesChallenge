@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ViewFlipper;
@@ -15,6 +16,7 @@ import com.weekendwars.movieschallenge.adapters.MovieActionListener;
 import com.weekendwars.movieschallenge.adapters.MoviesAdapter;
 import com.weekendwars.movieschallenge.dto.Movie;
 import com.weekendwars.movieschallenge.presenter.HomePresenter;
+import com.weekendwars.movieschallenge.utils.FeedbackUtils;
 import com.weekendwars.movieschallenge.view.HomeView;
 
 import java.util.List;
@@ -22,24 +24,29 @@ import java.util.List;
 public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> implements HomeView,
         MovieActionListener {
 
-    private static final int STATE_LIST = 1;
-    private static final int STATE_EMPTY = 2;
-    private static final int STATE_NETWORK = 3;
+    private static final int STATE_LIST = 0;
+    private static final int STATE_EMPTY = 1;
+    private static final int STATE_NETWORK = 2;
     private final MoviesAdapter mAdapter = new MoviesAdapter();
     private ViewFlipper mViewFlipper;
+    private SwipeRefreshLayout mRefreshLayout;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         mViewFlipper = findViewById(R.id.viewFlipper);
+        mRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
-        final RecyclerView recyclerView = findViewById(R.id.moviesListView);
+        mRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary,
+                R.color.colorPrimaryDark);
+
+        final RecyclerView mRecyclerView = findViewById(R.id.moviesListView);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(mAdapter);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setAdapter(mAdapter);
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        mRecyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull final RecyclerView recyclerView,
                                    final int dx, final int dy) {
@@ -47,12 +54,21 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
 
                 if (!mAdapter.isLoading() && layoutManager.findLastVisibleItemPosition()
                         == mAdapter.getItemCount() - 1) {
+                    showListProgress(true);
                     getPresenter().requestNewPage();
                 }
             }
         });
 
         mAdapter.setMoviewActionListener(this);
+
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                showProgress();
+                getPresenter().onRefresh();
+            }
+        });
     }
 
     @Override
@@ -76,9 +92,12 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
         setState(STATE_LIST);
     }
 
-    @Override
-    public void showProgress() {
-        mAdapter.showProgress(true);
+    /* default */ void showListProgress(final boolean show) {
+        mAdapter.showProgress(show);
+    }
+
+    /* default */ void showProgress() {
+        mRefreshLayout.setRefreshing(true);
     }
 
     @Override
@@ -92,6 +111,7 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     }
 
     private void setState(final int state) {
+        mRefreshLayout.setRefreshing(false);
         if (state == mViewFlipper.getDisplayedChild()) {
             return;
         }
@@ -100,8 +120,15 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
     }
 
     @Override
+    public void showListErrorView() {
+        showListProgress(false);
+        FeedbackUtils.showErrorSnackbar(findViewById(R.id.rootView),
+                getString(R.string.acitivty_home_error_new_page));
+    }
+
+    @Override
     public void renderNewPage(@NonNull final List<Movie> data) {
-        mAdapter.showProgress(false);
+        showListProgress(false);
         mAdapter.addItems(data);
     }
 

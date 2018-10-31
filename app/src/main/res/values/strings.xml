@@ -7,4 +7,5 @@
     <string name="activity_movie_detail_overview_title">Overview</string>
     <string name="activity_movie_detail_related_title">Related TV Shows</string>
     <string name="error_tv_show">Couldn\'t display similar TV shows</string>
+    <string name="acitivty_home_error_new_page">We couldn\'t load the new page</string>
 </resources>

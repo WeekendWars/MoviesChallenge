@@ -11,6 +11,7 @@ import com.weekendwars.movieschallenge.view.HomeView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -19,6 +20,7 @@ import io.reactivex.schedulers.Schedulers;
 public class HomePresenter extends AbstractPresenter<HomeView> {
 
     private static final String KEY_STATE = "key-state";
+    private static final int REQUEST_DEBOUNCE = 500;
     private MoviePage mState;
 
     @Override
@@ -33,14 +35,16 @@ public class HomePresenter extends AbstractPresenter<HomeView> {
     }
 
     private void requestPopularTvShows(final int page) {
-        addDisposable(MoviesModel.INSTANCE.getPopularTvShows(page).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<MoviePage>() {
+        addDisposable(MoviesModel.INSTANCE.getPopularTvShows(page)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .debounce(REQUEST_DEBOUNCE, TimeUnit.MILLISECONDS)
+                .subscribe(new Consumer<MoviePage>() {
                     @Override
                     public void accept(final MoviePage moviePage) {
                         updateState(moviePage);
 
                         if (page > 1) {
-
                             getView().renderNewPage(moviePage.results);
                         } else {
 
@@ -54,7 +58,13 @@ public class HomePresenter extends AbstractPresenter<HomeView> {
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(final Throwable throwable) {
-                        getView().showErrorView();
+
+                        // If it failed requesting a new page we display a different error view
+                        if (page > 1) {
+                            getView().showListErrorView();
+                        } else {
+                            getView().showErrorView();
+                        }
                     }
                 }));
     }
@@ -92,9 +102,15 @@ public class HomePresenter extends AbstractPresenter<HomeView> {
      */
     public void requestNewPage() {
         if (mState.page < mState.totalPages) {
-            getView().showProgress();
             requestPopularTvShows(mState.page + 1);
         }
+    }
+
+    /**
+     * Called for refreshing data
+     */
+    public void onRefresh() {
+        requestPopularTvShows(1);
     }
 
     @Override
@@ -103,4 +119,5 @@ public class HomePresenter extends AbstractPresenter<HomeView> {
                 + "mState=" + mState
                 + '}';
     }
+
 }

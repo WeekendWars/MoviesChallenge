@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,6 +22,7 @@ import com.weekendwars.movieschallenge.adapters.MovieActionListener;
 import com.weekendwars.movieschallenge.adapters.SimilarTvShowAdapter;
 import com.weekendwars.movieschallenge.dto.Movie;
 import com.weekendwars.movieschallenge.presenter.MovieDetailPresenter;
+import com.weekendwars.movieschallenge.utils.FeedbackUtils;
 import com.weekendwars.movieschallenge.utils.PictureUtils;
 import com.weekendwars.movieschallenge.view.MovieDetailView;
 
@@ -118,9 +118,7 @@ public class MovieDetailActivity extends AbstractActivity<MovieDetailView, Movie
 
     @Override
     public void onError() {
-        final Snackbar snackbar = Snackbar.make(findViewById(R.id.rootView), getString(R.string.error_tv_show), Snackbar.LENGTH_SHORT);
-        snackbar.getView().setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        snackbar.show();
+        FeedbackUtils.showErrorSnackbar(findViewById(R.id.rootView), getString(R.string.error_tv_show));
     }
 
     @Override

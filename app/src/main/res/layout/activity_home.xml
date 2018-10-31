@@ -1,37 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.HomeActivity">
 
-    <ViewFlipper
-        android:id="@+id/viewFlipper"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:inAnimation="@android:anim/fade_in"
-        android:outAnimation="@android:anim/fade_out">
+        android:layout_height="match_parent">
 
-        <!-- Progress View -->
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-
-        <!-- List view -->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/moviesListView"
+        <ViewFlipper
+            android:id="@+id/viewFlipper"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/_2m" />
+            android:inAnimation="@android:anim/fade_in"
+            android:outAnimation="@android:anim/fade_out">
 
-        <!-- Empty View -->
-        <include layout="@layout/activity_home_empty_view" />
+            <!-- List view -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/moviesListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:paddingTop="@dimen/_2m" />
 
-        <!-- Network error -->
-        <include layout="@layout/activity_home_error_view" />
+            <!-- Empty View -->
+            <include layout="@layout/activity_home_empty_view" />
 
-    </ViewFlipper>
+            <!-- Network error -->
+            <include layout="@layout/activity_home_error_view" />
+
+        </ViewFlipper>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.design.widget.CoordinatorLayout>

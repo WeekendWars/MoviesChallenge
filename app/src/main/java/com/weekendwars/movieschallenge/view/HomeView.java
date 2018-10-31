@@ -17,11 +17,6 @@ public interface HomeView extends AbstractView {
     void render(@NonNull final List<Movie> data);
 
     /**
-     * Called for displaying list's progress
-     */
-    void showProgress();
-
-    /**
      * Called for displaying list's empty state
      */
     void showEmptyView();
@@ -37,4 +32,9 @@ public interface HomeView extends AbstractView {
      * @param data the data being attached to the list
      */
     void renderNewPage(@NonNull final List<Movie> data);
+
+    /**
+     * Called for displaying an error view when requesting a new page
+     */
+    void showListErrorView();
 }

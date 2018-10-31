@@ -99,10 +99,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
      * @param show whether to display progress or not.
      */
     public void showProgress(final boolean show) {
-        final int updatedIndex = show ? mData.size() : mData.size() - 1;
         loading = show;
 
-        notifyItemChanged(updatedIndex);
+        notifyDataSetChanged();
     }
 
     public boolean isLoading() {

@@ -22,7 +22,7 @@ import com.weekendwars.movieschallenge.view.HomeView;
 import java.util.List;
 
 public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> implements HomeView,
-        MovieActionListener {
+        MovieActionListener{
 
     private static final int STATE_LIST = 0;
     private static final int STATE_EMPTY = 1;

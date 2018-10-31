@@ -2,7 +2,7 @@
 This is an Android Challenge for Android Ssr. role interview.
 
 
-# Requisites
+# Requirements
 
 They've requested for an Android TV shows application **Production ready code**. Which should display a list of the most popular TV shows on a list with
 endless scroll (pagination) and a detail screen which displays the TV show's image, it's description and an horizontal list with

@@ -33,6 +33,11 @@ Every API call and Image handling could have been easly done using `AsyncTask` b
 
 I also added **CI** including the <a href="https://github.com/Monits/static-code-analysis-plugin">Monits's static code analysis</a> library since it was
 intended to be an open source project and I wanted to keep a clean code contribution by running *Checkstyle, Findbugs, PMD, etc.*
+
+## Testing
+
+There are actually no tests made. I didn't find anything worth to be tested. Some UI testing could've been added but it would've been a walk-through the app instead of real UI Tests since there isn't any weird UI behaviour worth of being tested
+
 # Results
 
 ### App Information

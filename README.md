@@ -20,7 +20,7 @@ and the <a href="https://developers.themoviedb.org/3/tv/get-similar-tv-shows">si
 
 I already had an <a href="https://github.com/WeekendWars/mvp-core">MVP library</a> which allowed me to not rewrite all the
 base architecture. It was a hard decision to add libraries to the project since they're normally looking for simple and concise
-base code but I desided to show them that I've worked with a few well known libraries. Every API call and Image handling could have been easly done using `AsyncTask`
+base code but I desided to show them that I've worked with a few well known libraries. Even when every API call and Image handling could have been easily done using `AsyncTask` I've included the next libraries:
 
 * `io.reactivex.rxjava2:rxandroid:2.1.0` For handling Rx subscription on Android's thread
 * `com.squareup.retrofit2:converter-gson:2.4.0` For parsing Json responses

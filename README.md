@@ -40,7 +40,9 @@ There are actually no tests made. I didn't find anything worth to be tested. Som
 
 ### App Information
 
-**For debug compiled apk we have something like this: (There're like 20k methods only from Android and Support Library)**
+**For debug compiled apk we have something like this: (There're like 15k methods only from Android and Support Library)**
+
+<img src="https://lh4.googleusercontent.com/Q-Fx6E3JYhA6_W-6Craw8g0KNXMf9ePMULQSCxR20NQz33G2hl6NWMS68qqVeKO3CuRtTTUKAB3EtJiqWoNM=w2880-h1482-rw">
 
 ```
 Total methods in app-debug.apk: 37592 (57,36% used)

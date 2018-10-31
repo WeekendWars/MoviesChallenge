@@ -35,8 +35,22 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
         mViewFlipper = findViewById(R.id.viewFlipper);
 
         final RecyclerView recyclerView = findViewById(R.id.moviesListView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull final RecyclerView recyclerView,
+                                   final int dx, final int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                if (!mAdapter.isLoading() && layoutManager.findLastVisibleItemPosition()
+                        == mAdapter.getItemCount() - 1) {
+                    getPresenter().requestNewPage();
+                }
+            }
+        });
 
         mAdapter.setMoviewActionListener(this);
     }

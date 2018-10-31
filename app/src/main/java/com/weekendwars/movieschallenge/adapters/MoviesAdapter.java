@@ -39,7 +39,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         if (getItemViewType(position) == LAYOUT_HOLDER) {
             holder.onBind(mData.get(holder.getAdapterPosition()));
 
-            // If someone is listening for action events we configure listener's action
+            // If someone is listening for action events we configure action's listener
             if (mListener != null) {
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -62,8 +62,8 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
 
     @Override
     public int getItemViewType(final int position) {
-        // If it's the last position renders the progress view. Otherwise renders the holder's view
-        return position == mData.size() - 1 && loading ? LAYOUT_PROGRESS : LAYOUT_HOLDER;
+        // If it's the last position and it's loading renders the progress view. Otherwise renders the holder's view
+        return position == mData.size() && loading ? LAYOUT_PROGRESS : LAYOUT_HOLDER;
     }
 
     public void setMoviewActionListener(@NonNull final MovieActionListener listener) {
@@ -105,6 +105,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
         notifyItemChanged(updatedIndex);
     }
 
+    public boolean isLoading() {
+        return loading;
+    }
+
     @Override
     public String toString() {
         return "MoviesAdapter{"
@@ -112,4 +116,5 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieViewHolder> {
                 + ", loading=" + loading
                 + '}';
     }
+
 }

@@ -6,6 +6,11 @@ import com.weekendwars.movieschallenge.services.TVService;
 
 import io.reactivex.Observable;
 
+/**
+ * This is the model class. Intended to handle any business logic. Since there's no business logic
+ * on this project like "ordering a list of movies" It's only working as a gateway between the service
+ * and the presenter
+ */
 public final class MoviesModel {
 
     public static final MoviesModel INSTANCE = new MoviesModel();
@@ -17,10 +22,11 @@ public final class MoviesModel {
     /**
      * Makes an API call for requesting the movies pagination data
      *
+     * @param page the offset page
      * @return the observable with data
      */
-    public Observable<MoviePage> getPopularTvShows() {
-        return getService().getPopularTvShows();
+    public Observable<MoviePage> getPopularTvShows(final int page) {
+        return getService().getPopularTvShows(page);
     }
 
     /**

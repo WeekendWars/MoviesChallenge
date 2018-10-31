@@ -38,6 +38,10 @@ public class HomeActivity extends AbstractActivity<HomeView, HomePresenter> impl
         mViewFlipper = findViewById(R.id.viewFlipper);
         mRefreshLayout = findViewById(R.id.swipeRefreshLayout);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+        getSupportActionBar().setLogo(R.drawable.logo);
+
         mRefreshLayout.setColorSchemeResources(R.color.colorAccent, R.color.colorPrimary,
                 R.color.colorPrimaryDark);
 
